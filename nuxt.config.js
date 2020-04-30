@@ -52,7 +52,7 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: process.env.BASE_URL || 'https://jsonplaceholder.typicode.com'
+    baseURL: process.env.API_BASE_URL || 'https://jsonplaceholder.typicode.com'
   },
   /*
    ** Build configuration
