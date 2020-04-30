@@ -1,38 +1,32 @@
 <template>
-  <div class="container">
-    <div>
+  <div class="container-fluid">
+    <div class="p-4 justify-content-center">
       <logo />
-      <h1 class="title">
-        nuxt-with-repository-pattern
-      </h1>
-      <h2 class="subtitle">
-        My great Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+    </div>
+    <div class="row">
+      <post v-for="(post, i) in posts" :key="i" :post="post" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Logo from '~/components/Logo.vue'
-
+import Post from '~/components/Post.vue'
 export default {
   components: {
-    Logo
+    Logo,
+    Post
   },
-  mounted() {
-    this.$repositories.user.all()
+  async fetch({ store }) {
+    await store.dispatch('post/get_posts')
+  },
+  computed: {
+    ...mapState({
+      posts: (state) => {
+        return state.post.posts
+      }
+    })
   }
 }
 </script>

@@ -1,9 +1,7 @@
 const resource = '/users'
 export default ($axios) => ({
   all() {
-    $axios.get(`${resource}`).then((res) => {
-      console.log(res)
-    })
+    return $axios.get(`${resource}`)
   },
 
   show(id) {
