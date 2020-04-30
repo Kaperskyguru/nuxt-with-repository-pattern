@@ -1,3 +1,4 @@
+require('dotenv').config()
 export default {
   mode: 'universal',
   /*
@@ -27,7 +28,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/repositories.js'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -50,7 +51,9 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: process.env.BASE_URL || 'https://jsonplaceholder.typicode.com'
+  },
   /*
    ** Build configuration
    */
